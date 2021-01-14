@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 EXPOSE 5000
-ENTRYPOINT ["dotnet", "M10.Presentation.Web.dll"]
+ENTRYPOINT ["dotnet", "EduJournal.Presentation.Web.dll"]

@@ -5,7 +5,7 @@ services:
     ports:
       - "5000:80"
     environment:
-      - MSSQL_CONNECTION_STRING=Server=mssql;Database=m10;User=sa;Password=Password123;
+      - MSSQL_CONNECTION_STRING=Server=mssql;Database=EduJournal;User=sa;Password=Password123;
     links:
       - mssql
   mssql:

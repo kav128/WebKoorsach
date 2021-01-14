@@ -1,0 +1,52 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.BLL", "EduJournal.BLL\EduJournal.BLL.csproj", "{A1DF7CF8-A522-4FA9-86EB-C7E7B70F8CE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.DAL", "EduJournal.DAL\EduJournal.DAL.csproj", "{7FA0A9A8-9605-4A3E-A805-324393667A58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.BLL.Tests", "EduJournal.BLL.Tests\EduJournal.BLL.Tests.csproj", "{E90B17F3-E2A1-4C70-B115-F2C57FDA4911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.Presentation.Web", "EduJournal.Presentation.Web\EduJournal.Presentation.Web.csproj", "{70A6E22A-A38A-4813-8F2D-2D306D8669C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.DAL.Tests", "EduJournal.DAL.Tests\EduJournal.DAL.Tests.csproj", "{7C274681-264A-4154-A6E7-CDAC9D70466C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.Presentation.Web.Tests", "EduJournal.Presentation.Web.Tests\EduJournal.Presentation.Web.Tests.csproj", "{63A13D4C-A28C-46E0-B2BD-ECFDEF0CB24B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduJournal.IntegrationTests", "EduJournal.IntegrationTests\EduJournal.IntegrationTests.csproj", "{E9A1F2C4-8410-4D61-9B3D-68B94BF7323D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1DF7CF8-A522-4FA9-86EB-C7E7B70F8CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DF7CF8-A522-4FA9-86EB-C7E7B70F8CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DF7CF8-A522-4FA9-86EB-C7E7B70F8CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DF7CF8-A522-4FA9-86EB-C7E7B70F8CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA0A9A8-9605-4A3E-A805-324393667A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA0A9A8-9605-4A3E-A805-324393667A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA0A9A8-9605-4A3E-A805-324393667A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA0A9A8-9605-4A3E-A805-324393667A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90B17F3-E2A1-4C70-B115-F2C57FDA4911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90B17F3-E2A1-4C70-B115-F2C57FDA4911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90B17F3-E2A1-4C70-B115-F2C57FDA4911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90B17F3-E2A1-4C70-B115-F2C57FDA4911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A6E22A-A38A-4813-8F2D-2D306D8669C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A6E22A-A38A-4813-8F2D-2D306D8669C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A6E22A-A38A-4813-8F2D-2D306D8669C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A6E22A-A38A-4813-8F2D-2D306D8669C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C274681-264A-4154-A6E7-CDAC9D70466C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C274681-264A-4154-A6E7-CDAC9D70466C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C274681-264A-4154-A6E7-CDAC9D70466C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C274681-264A-4154-A6E7-CDAC9D70466C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A13D4C-A28C-46E0-B2BD-ECFDEF0CB24B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A13D4C-A28C-46E0-B2BD-ECFDEF0CB24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A13D4C-A28C-46E0-B2BD-ECFDEF0CB24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A13D4C-A28C-46E0-B2BD-ECFDEF0CB24B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9A1F2C4-8410-4D61-9B3D-68B94BF7323D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9A1F2C4-8410-4D61-9B3D-68B94BF7323D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9A1F2C4-8410-4D61-9B3D-68B94BF7323D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9A1F2C4-8410-4D61-9B3D-68B94BF7323D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

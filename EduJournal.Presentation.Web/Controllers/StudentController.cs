@@ -73,7 +73,7 @@ namespace EduJournal.Presentation.Web.Controllers
             try
             {
                 int id = await _studentService.AddStudent(dto);
-                return CreatedAtRoute("Student Get", new { Id = id }, new StudentModel(id, model.FullName));
+                return CreatedAtRoute("Student Get", new { Id = id }, new StudentModel(id, model.FullName, model.Email));
             }
             catch (IncorrectIdException e)
             {

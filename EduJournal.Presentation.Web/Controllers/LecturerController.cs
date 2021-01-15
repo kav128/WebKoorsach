@@ -74,7 +74,7 @@ namespace EduJournal.Presentation.Web.Controllers
             {
                 int id = await _service.AddLecturer(dto);
                 return CreatedAtRoute("Lecture Get", new { Id = id }, 
-                    new LecturerModel(id, model.FullName, Array.Empty<int>()));
+                    new LecturerModel(id, model.FullName, model.Email, Array.Empty<int>()));
             }
             catch (IncorrectIdException e)
             {

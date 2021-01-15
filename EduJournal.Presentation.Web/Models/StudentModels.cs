@@ -3,11 +3,11 @@ using FluentValidation.Validators;
 
 namespace EduJournal.Presentation.Web.Models
 {
-    public record StudentModel(int Id, string FullName);
+    public record StudentModel(int Id, string FullName, string Email);
     
-    public record StudentAddModel(string FullName);
+    public record StudentAddModel(string FullName, string Email);
 
-    public record StudentUpdateModel(int Id, string FullName);
+    public record StudentUpdateModel(int Id, string FullName, string Email);
     
     /* --- */
 
@@ -16,6 +16,7 @@ namespace EduJournal.Presentation.Web.Models
         public StudentAddModelValidator()
         {
             RuleFor(model => model.FullName).NotEmpty();
+            RuleFor(model => model.Email).EmailAddress();
         }
     }
 
@@ -25,6 +26,7 @@ namespace EduJournal.Presentation.Web.Models
         {
             RuleFor(model => model.Id).GreaterThan(0);
             RuleFor(model => model.FullName).NotEmpty();
+            RuleFor(model => model.Email).EmailAddress();
         }
     }
 }

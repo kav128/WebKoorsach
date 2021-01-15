@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace EduJournal.Presentation.Web.Models
 {
-    public record LecturerModel(int Id, string FullName, int[] CourseIds)
+    public record LecturerModel(int Id, string FullName, string Email, int[] CourseIds)
     {
         public virtual bool Equals(LecturerModel? other)
         {
@@ -16,9 +16,9 @@ namespace EduJournal.Presentation.Web.Models
         public override int GetHashCode() => HashCode.Combine(Id, FullName, CourseIds);
     }
 
-    public record LecturerAddModel(string FullName);
+    public record LecturerAddModel(string FullName, string Email);
 
-    public record LecturerUpdateModel(int Id, string FullName);
+    public record LecturerUpdateModel(int Id, string FullName, string Email);
     
     /* --- */
 
@@ -27,6 +27,7 @@ namespace EduJournal.Presentation.Web.Models
         public LecturerAddModelValidator()
         {
             RuleFor(model => model.FullName).NotEmpty();
+            RuleFor(model => model.Email).EmailAddress();
         }
     }
 
@@ -36,6 +37,7 @@ namespace EduJournal.Presentation.Web.Models
         {
             RuleFor(model => model.Id).GreaterThan(0);
             RuleFor(model => model.FullName).NotEmpty();
+            RuleFor(model => model.Email).EmailAddress();
         }
     }
 }

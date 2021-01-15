@@ -26,7 +26,7 @@ namespace EduJournal.Presentation.Web.Tests
                 {
                     new() { Id = 1, FullName = "Lecturer 1", CourseIds = new[] { 1, 2, 5 } }
                 },
-                new LecturerModel[] { new(1, "Lecturer 1", new[] { 1, 2, 5 }) }
+                new LecturerModel[] { new(1, "Lecturer 1", "test@localhost", new[] { 1, 2, 5 }) }
             };
             yield return new object[]
             {
@@ -37,8 +37,8 @@ namespace EduJournal.Presentation.Web.Tests
                 },
                 new LecturerModel[]
                 {
-                    new(1, "Lecturer 1", new[] { 1, 2, 5 }),
-                    new(2, "Lecturer 2", Array.Empty<int>())
+                    new(1, "Lecturer 1", "test@localhost", new[] { 1, 2, 5 }),
+                    new(2, "Lecturer 2", "test@localhost", Array.Empty<int>())
                 }
             };
         }
@@ -78,7 +78,7 @@ namespace EduJournal.Presentation.Web.Tests
                 },
                 new LecturerDto { Id = 1, FullName = "Lecturer 1", CourseIds = new[] { 1, 2, 5 } },
                 1,
-                new LecturerModel(1, "Lecturer 1", new[] { 1, 2, 5 })
+                new LecturerModel(1, "Lecturer 1", "test@localhost", new[] { 1, 2, 5 })
             };
             yield return new object[]
             {
@@ -89,7 +89,7 @@ namespace EduJournal.Presentation.Web.Tests
                 },
                 new LecturerDto { Id = 2, FullName = "Lecturer 2", CourseIds = Array.Empty<int>() },
                 2,
-                new LecturerModel(2, "Lecturer 2", Array.Empty<int>())
+                new LecturerModel(2, "Lecturer 2", "test@localhost", Array.Empty<int>())
             };
             yield return new object[]
             {
@@ -134,7 +134,7 @@ namespace EduJournal.Presentation.Web.Tests
         {
             yield return new object[]
             {
-                new LecturerAddModel("Test Lecturer"),
+                new LecturerAddModel("Test Lecturer", "test@localhost"),
                 new LecturerDto { Id = 0, FullName = "Test Lecturer", CourseIds = Array.Empty<int>() }
             };
         }
@@ -167,7 +167,7 @@ namespace EduJournal.Presentation.Web.Tests
         {
             yield return new object[]
             {
-                new LecturerUpdateModel(1, "Test Lecturer"),
+                new LecturerUpdateModel(1, "Test Lecturer", "test@localhost"),
                 new LecturerDto { Id = 1, FullName = "Test Lecturer", CourseIds = Array.Empty<int>() }
             };
         }

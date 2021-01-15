@@ -25,7 +25,7 @@ namespace EduJournal.Presentation.Web.Tests
                 {
                     new() { Id = 1, FullName = "Student 1" }
                 },
-                new StudentModel[] { new(1, "Student 1") }
+                new StudentModel[] { new(1, "Student 1", "test@localhost") }
             };
             yield return new object[]
             {
@@ -36,8 +36,8 @@ namespace EduJournal.Presentation.Web.Tests
                 },
                 new StudentModel[]
                 {
-                    new(1, "Student 1"),
-                    new(2, "Student 2")
+                    new(1, "Student 1", "test@localhost"),
+                    new(2, "Student 2", "test@localhost")
                 }
             };
         }
@@ -77,7 +77,7 @@ namespace EduJournal.Presentation.Web.Tests
                 },
                 new StudentDto { Id = 1, FullName = "Student 1" },
                 1,
-                new StudentModel(1, "Student 1")
+                new StudentModel(1, "Student 1", "test@localhost")
             };
             yield return new object[]
             {
@@ -88,7 +88,7 @@ namespace EduJournal.Presentation.Web.Tests
                 },
                 new StudentDto { Id = 2, FullName = "Student 2" },
                 2,
-                new StudentModel(2, "Student 2")
+                new StudentModel(2, "Student 2", "test@localhost")
             };
             yield return new object[]
             {
@@ -133,7 +133,7 @@ namespace EduJournal.Presentation.Web.Tests
         {
             yield return new object[]
             {
-                new StudentAddModel("Test Student"),
+                new StudentAddModel("Test Student", "test@localhost"),
                 new StudentDto { Id = 0, FullName = "Test Student" }
             };
         }
@@ -166,7 +166,7 @@ namespace EduJournal.Presentation.Web.Tests
         {
             yield return new object[]
             {
-                new StudentUpdateModel(1, "Test Student"),
+                new StudentUpdateModel(1, "Test Student", "test@localhost"),
                 new StudentDto { Id = 1, FullName = "Test Student" }
             };
         }

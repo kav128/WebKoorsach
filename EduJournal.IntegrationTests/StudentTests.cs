@@ -73,9 +73,9 @@ namespace EduJournal.IntegrationTests
                 await context.Lecturers.AddAsync(new Lecturer { FullName = "Test", Email = "Test" });
                 await context.SaveChangesAsync();
                 await context.Students.AddRangeAsync(
-                    new Student { FullName = "Test 1" },
+                    new Student { FullName = "Test 1", Email = "test@localhost" },
                     new Student { FullName = "Test 2" },
-                    new Student { FullName = "Test 3" });
+                    new Student { FullName = "Test 3", Email = "test@localhost" });
                 await context.SaveChangesAsync();
             }
             
@@ -88,9 +88,9 @@ namespace EduJournal.IntegrationTests
             
             Assert.That(content, Is.EquivalentTo(new StudentModel[]
             {
-                new(1, "Test 1"),
-                new(2, "Test 2"),
-                new(3, "Test 3")
+                new(1, "Test 1", "test@localhost"),
+                new(2, "Test 2", null!),
+                new(3, "Test 3", "test@localhost")
             }));
         }
 
@@ -100,7 +100,7 @@ namespace EduJournal.IntegrationTests
             // Arrange
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
             {
-                await context.Students.AddAsync(new Student { FullName = "Test" });
+                await context.Students.AddAsync(new Student { FullName = "Test", Email = "test@localhost"});
                 await context.SaveChangesAsync();
             }
             
@@ -110,13 +110,14 @@ namespace EduJournal.IntegrationTests
 
             // Assert
             response.EnsureSuccessStatusCode();
-            Assert.That(model, Is.EqualTo(new StudentModel(1, "Test")));
+            Assert.That(model, Is.EqualTo(new StudentModel(1, "Test", "test@localhost")));
         }
 
-        [Test]
-        public async Task PostTest()
+        [TestCase("Test", "test@localhost")]
+        [TestCase("Test", null)]
+        public async Task PostTest(string name, string email)
         {
-            var model = new StudentAddModel("Test");
+            var model = new StudentAddModel(name, email);
             
             // Act
             var response = await _client.PostAsync("/Student", JsonContent.Create(model));
@@ -126,21 +127,23 @@ namespace EduJournal.IntegrationTests
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
             {
                 Student student = await context.Students.FirstAsync();
-                Assert.That(student, Is.EqualTo(new Student { Id = 1, FullName = "Test" }));
+                Assert.That(student, Is.EqualTo(new Student { Id = 1, FullName = name, Email = email }));
             }
         }
 
         [Test]
-        public async Task PostTest_WrongFormat()
+        [TestCase("Test", "test")]
+        [TestCase(null, "test@localhost")]
+        public async Task PostTest_WrongFormat(string name, string email)
         {
             // Arrange
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
             {
-                await context.Lecturers.AddAsync(new Lecturer { FullName = "Test", Email = "Test" });
+                await context.Lecturers.AddAsync(new Lecturer { FullName = "Test", Email = "test@localhost" });
                 await context.SaveChangesAsync();
             }
 
-            var model = new StudentAddModel(null!);
+            var model = new StudentAddModel(name, email);
             
             // Act
             var response = await _client.PostAsync("/Student", JsonContent.Create(model));
@@ -149,8 +152,9 @@ namespace EduJournal.IntegrationTests
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
         }
 
-        [Test]
-        public async Task PatchTest()
+        [TestCase("Test After", "test@localhost")]
+        [TestCase("Test After", null)]
+        public async Task PatchTest(string name, string email)
         {
             // Arrange
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
@@ -158,7 +162,7 @@ namespace EduJournal.IntegrationTests
                 await context.Students.AddAsync(new Student { FullName = "Test" });
                 await context.SaveChangesAsync();
             }
-            var model = new StudentUpdateModel(1, "Test After");
+            var model = new StudentUpdateModel(1, name, email);
             
             // Act
             var response = await _client.PatchAsync("/Student", JsonContent.Create(model));
@@ -168,13 +172,14 @@ namespace EduJournal.IntegrationTests
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
             {
                 Student student = await context.Students.FirstAsync();
-                Assert.That(student, Is.EqualTo(new Student { Id = 1, FullName = "Test After" }));
+                Assert.That(student, Is.EqualTo(new Student { Id = 1, FullName = name, Email = email }));
             }
         }
 
-        [TestCase(1, null)]
-        [TestCase(0, "Test")]
-        public async Task PatchTest_WrongFormat(int id, string name)
+        [TestCase(1, null, "test@localhost")]
+        [TestCase(0, "Test", "test@localhost")]
+        [TestCase(1, "Test", "test")]
+        public async Task PatchTest_WrongFormat(int id, string name, string email)
         {
             // Arrange
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
@@ -182,7 +187,7 @@ namespace EduJournal.IntegrationTests
                 await context.Students.AddAsync(new Student { FullName = "Test" });
                 await context.SaveChangesAsync();
             }
-            var model = new StudentUpdateModel(id, name);
+            var model = new StudentUpdateModel(id, name, email);
             
             // Act
             var response = await _client.PatchAsync("/Student", JsonContent.Create(model));

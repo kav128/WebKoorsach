@@ -112,11 +112,11 @@ namespace EduJournal.BLL.Services.Entity
                 if (lecturer is null)
                     throw new UnexpectedDataException($"Unexpected behavior. Lecturer with id {course.LecturerId} does not exist");
                 
-                IMessageSender emailSender = _senderFactory.GetEmailSender();
-                emailSender.Send(
+                IMessageSender sender = _senderFactory.GetEmailSender();
+                sender.Send(
                     $"Student {student.FullName} missed {missedLectures} lectures in course '{course.Name}'!",
                     lecturer.Email);
-                emailSender.Send(
+                sender.Send(
                     $"You missed {missedLectures} lectures in course '{course.Name}'!",
                     student.Email);
             }
@@ -128,8 +128,8 @@ namespace EduJournal.BLL.Services.Entity
                 if (course is null)
                     throw new UnexpectedDataException($"Unexpected behavior. Course with id {lecture.CourseId} does not exist");
 
-                IMessageSender smsSender = _senderFactory.GetSmsSender();
-                smsSender.Send($"Your average mark in course '{course.Name}' is {averageScore}.", "+78005553535");
+                IMessageSender sender = _senderFactory.GetEmailSender();
+                sender.Send($"Your average mark in course '{course.Name}' is {averageScore}.", student.Email);
             }
         }
 

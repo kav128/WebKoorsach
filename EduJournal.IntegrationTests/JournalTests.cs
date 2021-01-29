@@ -146,7 +146,7 @@ namespace EduJournal.IntegrationTests
             }
 
             // Act
-            var model = new JournalRecordModel(false, 0, 1, 1);
+            var model = new JournalRecordModel(true, 5, 1, 1);
             var response = await _client.PostAsJsonAsync("/Journal", model);
 
             // Assert
@@ -154,7 +154,7 @@ namespace EduJournal.IntegrationTests
             await using (ApplicationContext context = _contextFactory.CreateDbContext())
             {
                 JournalRecord record = await context.JournalRecords.FirstAsync();
-                Assert.That(record, Is.EqualTo(new JournalRecord { Id = 1, Attendance = false, Score = 0, StudentId = 1, LectureId = 1 }));
+                Assert.That(record, Is.EqualTo(new JournalRecord { Id = 1, Attendance = true, Score = 5, StudentId = 1, LectureId = 1 }));
             }
         }
 
